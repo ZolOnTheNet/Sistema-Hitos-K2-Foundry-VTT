@@ -5,12 +5,12 @@ Je m'écartes des règles de Hitos pour mon propre système, hitos étant une bo
 Hi, it's a modification of the great work of Elfonochais for implemantation of Hitos Rules.
 I modify many point to use my own adaptation of hitos Rules for my RGP game.
 
-#Modifications :
-##En cours :
+# Modifications :
+## En cours :
 capacity to use formula in the damage like mCM+1d6
 use another model of dice : double add the value on roll : i.e. : 4 5 5 => 9 10 10. 7 8 8 => 15 16 16. 4 4 5 => 8 8 9
 
-##A prevoir :
+## A prevoir :
 Point of magic
 no reroll a critiqual roll
 
