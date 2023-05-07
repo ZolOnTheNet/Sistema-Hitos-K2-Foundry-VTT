@@ -5,6 +5,7 @@ import { HitosActor } from "./actor/actor.js";
 import { HitosActorSheet } from "./actor/actor-sheet.js";
 import { HitosItem } from "./item/item.js";
 import { HitosItemSheet } from "./item/item-sheet.js";
+import { registerSettings } from "./settings.js";
 
 Hooks.once('init', async function() {
 
@@ -12,6 +13,8 @@ Hooks.once('init', async function() {
     HitosActor,
     HitosItem
   };
+
+  registerSettings();
 
   /**
    * Set an initiative formula for the system
@@ -34,7 +37,7 @@ Hooks.once('init', async function() {
     let val = Number(data.value);
     console.log(data)
 
-    if (data.attribute === "resistencia" || data.attribute === "estabilidadMental") {
+    if (data.attribute === "resistencia" || (game.settings.get("hitos", "mentalHealthEnabled") && data.attribute === "estabilidadMental")) {
       val = Number(data.max - data.value);
     }
 
@@ -94,7 +97,7 @@ Hooks.once('init', async function() {
     } else {
       return opts.inverse(this);
     }
-  }); 
+  });
 
    // Register Handlebars utilities
    Handlebars.registerHelper("json", JSON.stringify);
@@ -128,10 +131,13 @@ Hooks.once('init', async function() {
            bool = false;
          }
          break;
+       case "%":
+         bool = (a % b) === 0;
+         break;
        default:
          throw "Unknown operator " + operator;
      }
- 
+
      if (bool) {
        return opts.fn(this);
      } else {
@@ -168,6 +174,22 @@ Hooks.once('init', async function() {
 
   Handlebars.registerHelper("log", function(something) {
     console.log(something);
+  });
+
+  Handlebars.registerHelper("ifMental", function(opts) {
+    if (game.settings.get("hitos", "mentalHealthEnabled")) {
+      return opts.fn(this);
+    } else {
+      return opts.inverse(this);
+    }
+  });
+
+  Handlebars.registerHelper("ifGameModule", function(ability, opts) {
+    if (game.settings.get("hitos", "gameModule") === ability.gameModule || "core" === ability.gameModule) {
+      return opts.fn(this);
+    } else {
+      return opts.inverse(this);
+    }
   });
 });
 
