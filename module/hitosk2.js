@@ -8,7 +8,7 @@ import { HitosItemSheet } from "./item/item-sheet.js";
 
 Hooks.once('init', async function() {
 
-  game.hitos = {
+  game.hitosk2 = {
     HitosActor,
     HitosItem
   };
@@ -60,9 +60,9 @@ Hooks.once('init', async function() {
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("hitos", HitosActorSheet, { makeDefault: true });
+  Actors.registerSheet("hitosk2", HitosActorSheet, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("hitos", HitosItemSheet, { makeDefault: true });
+  Items.registerSheet("hitosk2", HitosItemSheet, { makeDefault: true });
 
   Handlebars.registerHelper("math", function (lvalue, operator, rvalue, options) {
     lvalue = parseFloat(lvalue);

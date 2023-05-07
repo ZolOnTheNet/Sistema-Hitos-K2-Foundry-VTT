@@ -275,7 +275,7 @@
                         </div>
                         {{#each actor.weapon as |item _id|}}
                         <li class="item flexrow" data-item-id="{{item._id}}">
-                            <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+                            <img src="{{item.img}}" title="{{item.name}}" style="flex:0" width="24" height="24" />
                             <h4 class="item-name rollable-attack" data-itemID="{{item._id}}">{{item.name}}</h4>
                             <span>{{item.system.damage}}</span>
                             <div class="item-controls">
@@ -291,7 +291,7 @@
                         </div>
                         {{#each actor.armor as |item _id|}}
                         <li class="item flexrow" data-item-id="{{item._id}}">
-                            <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+                            <img src="{{item.img}}" title="{{item.name}}" style="flex:0" width="24" height="24" />
                             <h4 class="item-name" data-itemID="{{item._id}}">{{item.name}}</h4>
                             <span>{{item.system.rd}}</span>
                             <div class="item-controls">
